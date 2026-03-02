@@ -1572,7 +1572,9 @@ function adicionarAoOrcamento(tipo) {
   }
   const qtyEl = document.getElementById(qtyId);
   const qty = qtyEl ? Math.max(1, parseInt(qtyEl.value) || 1) : 1;
-  carrinho.push({ tipo, desc: item, qty });
+const cepMap = { disco: 'd', mancal: 'm', eixo: 'e' };
+const cepInfo = cepData[cepMap[tipo]] ? { ...cepData[cepMap[tipo]] } : null;
+carrinho.push({ tipo, desc: item, qty, cepInfo });
   atualizarCarrinho();
   document.getElementById('carrinho-painel').classList.add('aberto');
 }
@@ -1613,8 +1615,11 @@ function atualizarCarrinho() {
   } else {
     carrinho.forEach((item, i) => {
       const li = document.createElement('li');
-      li.innerHTML = `
-        <span class="item-desc">${item.desc}</span>
+      const cepLabel = item.cepInfo
+  ? `<span style="font-size:11px;color:var(--green-lt);display:block;margin-top:2px;">📍 CEP: ${item.cepInfo.cep.replace(/(\d{5})(\d{3})/, '$1-$2')} – ${item.cepInfo.localidade}</span>`
+  : `<span style="font-size:11px;color:var(--steel);display:block;margin-top:2px;">📍 CEP não informado</span>`;
+li.innerHTML = `
+  <span class="item-desc">${item.desc}${cepLabel}</span>
         <div class="item-actions">
           <div class="cart-qty-controls">
             <button class="cart-qty-btn" onclick="alterarQtyCarrinho(${i}, -1)">−</button>
@@ -1632,7 +1637,12 @@ function atualizarCarrinho() {
     btnEnviar.style.display = 'flex';
     btnLimpar.style.display = 'block';
 
-    const itens = carrinho.map((it, i) => `${i + 1}. ${it.desc} — Qtd: ${it.qty}`).join('\n');
+    const itens = carrinho.map((it, i) => {
+  const cepLinha = it.cepInfo
+    ? `\n   📍 CEP: ${it.cepInfo.cep.replace(/(\d{5})(\d{3})/, '$1-$2')} (${it.cepInfo.localidade})`
+    : '';
+  return `${i + 1}. ${it.desc} — Qtd: ${it.qty}${cepLinha}`;
+}).join('\n');
     const msg = encodeURIComponent(`Olá, Soloforte! Gostaria de solicitar orçamento dos seguintes itens:\n\n${itens}\n\nPoderia me informar disponibilidade e preços?`);
     btnEnviar.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
   }
@@ -1766,6 +1776,7 @@ function atualizarWA(prefix) {
 </body>
 
 </html>
+
 
 
 
