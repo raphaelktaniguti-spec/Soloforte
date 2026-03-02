@@ -823,6 +823,19 @@
     .footer-content { flex-direction: column; }
     footer { padding: 40px 20px 20px; }
   }
+/* ── CARRINHO QUANTIDADE ── */
+    .quantidade-wrap {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px; margin-top: 8px;
+    }
+    .quantidade-wrap label { font-size: 0.88rem; color: var(--steel); }
+    .qtd-input {
+      width: 70px; padding: 6px 10px;
+      background: var(--card-bg); border: 2px solid var(--border);
+      border-radius: 8px; color: #e8ede8; font-size: 1rem;
+      text-align: center;
+    }
+    .qtd-input:focus { outline: none; border-color: var(--green); }
   </style>
 </head>
 <body>
@@ -1086,6 +1099,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.044 23.956l6.254-1.641A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.003-1.374l-.36-.214-3.713.975.993-3.62-.234-.373A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
           Solicitar pelo WhatsApp
         </a>
+        <div class="quantidade-wrap">
+  <label>Quantidade:</label>
+  <input type="number" id="m-qtd" min="1" value="1" class="qtd-input" />
+</div>
       </div>
       <button class="btn-add-orcamento" onclick="adicionarAoOrcamento('mancal')">＋ Adicionar ao Orçamento</button>
       <button class="restart-btn" onclick="mRestart()">↺ Fazer nova seleção</button>
@@ -1214,6 +1231,10 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.044 23.956l6.254-1.641A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.79 9.79 0 01-5.003-1.374l-.36-.214-3.713.975.993-3.62-.234-.373A9.79 9.79 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
           Solicitar pelo WhatsApp
         </a>
+        <div class="quantidade-wrap">
+  <label>Quantidade:</label>
+  <input type="number" id="e-qtd" min="1" value="1" class="qtd-input" />
+</div>
       </div>
       <button class="btn-add-orcamento" onclick="adicionarAoOrcamento('eixo')">＋ Adicionar ao Orçamento</button>
       <button class="restart-btn" onclick="eixoRestart()">↺ Selecionar outro tipo</button>
@@ -1528,18 +1549,21 @@ function eixoRestart() {
 const carrinho = [];
 
 function adicionarAoOrcamento(tipo) {
-  let item = '';
+  let item = '', qtd = 1;
   if (tipo === 'disco') {
     if (!dSel.tipo || !dSel.polegadas || !dSel.furo) return;
+    qtd = parseInt(document.getElementById('d-qtd').value) || 1;
     item = `Disco ${dSel.tipo} ${dSel.polegadas} – Furo ${dSel.furo}`;
   } else if (tipo === 'mancal') {
     if (!mSel.tipo || !mSel.modelo) return;
+    qtd = parseInt(document.getElementById('m-qtd').value) || 1;
     item = `Mancal ${mSel.tipo} – ${mSel.modelo}`;
   } else if (tipo === 'eixo') {
     if (!eixoAtual) return;
+    qtd = parseInt(document.getElementById('e-qtd').value) || 1;
     item = `Eixo ${eixoAtual}`;
   }
-  carrinho.push({ tipo, desc: item });
+  carrinho.push({ tipo, desc: item, qtd });
   atualizarCarrinho();
   // Abre o painel automaticamente ao adicionar
   document.getElementById('carrinho-painel').classList.add('aberto');
@@ -1565,7 +1589,7 @@ function atualizarCarrinho() {
   const btnEnviar = document.getElementById('carrinho-wa');
   const btnLimpar = document.querySelector('.carrinho-limpar');
 
-  lista.innerHTML = '';
+javascriptlista.innerHTML = '';
   if (carrinho.length === 0) {
     lista.innerHTML = '<li class="carrinho-vazio">Nenhum produto adicionado</li>';
     badge.style.display = 'none';
@@ -1574,16 +1598,15 @@ function atualizarCarrinho() {
   } else {
     carrinho.forEach((item, i) => {
       const li = document.createElement('li');
-      li.innerHTML = `<span class="item-desc">${item.desc}</span><button class="item-remove" onclick="removerItem(${i})">✕</button>`;
+      li.innerHTML = `<span class="item-desc">${item.desc} <strong style="color:var(--green-lt);">× ${item.qtd}</strong></span><button class="item-remove" onclick="removerItem(${i})">✕</button>`;
       lista.appendChild(li);
     });
     badge.textContent = carrinho.length;
     badge.style.display = 'flex';
     btnEnviar.style.display = 'flex';
     btnLimpar.style.display = 'block';
-
     // Monta a mensagem do WhatsApp
-    const itens = carrinho.map((it, i) => `${i + 1}. ${it.desc}`).join('\n');
+    const itens = carrinho.map((it, i) => `${i + 1}. ${it.desc} (Qtd: ${it.qtd})`).join('\n');
     const msg = encodeURIComponent(`Olá, Soloforte! Gostaria de solicitar orçamento dos seguintes itens:\n\n${itens}\n\nPoderia me informar disponibilidade e preços?`);
     btnEnviar.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
   }
@@ -1734,6 +1757,7 @@ function atualizarWA(prefix) {
 </body>
 
 </html>
+
 
 
 
