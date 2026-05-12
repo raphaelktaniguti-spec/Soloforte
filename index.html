@@ -27,14 +27,25 @@
       --steel:    #7a8a7a;
       --disabled: #444;
       --radius:   12px;
-    }
-
     body {
-      font-family: 'Barlow', sans-serif;
-      background: var(--black);
-      color: #e8ede8;
-      min-height: 100vh;
-    }
+  font-family: 'Barlow', sans-serif;
+  color: #e8ede8;
+  min-height: 100vh;
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 0;
+  pointer-events: none;
+}
 
     /* ── HEADER ── */
     header {
