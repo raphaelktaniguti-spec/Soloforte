@@ -42,9 +42,14 @@ body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 0;
   pointer-events: none;
+}
+
+header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
+  position: relative;
+  z-index: 1;
 }
 
     /* ── HEADER ── */
