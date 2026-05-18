@@ -885,6 +885,40 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
   @media (min-width: 601px) and (max-width: 900px) {
     .carrossel-slide { flex: 0 0 calc(50% - 6px); min-width: calc(50% - 6px); }
   }
+/* ── SOBRE ── */
+  .sobre-layout {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  .sobre-esquerda { flex: 1.2; }
+  .sobre-direita {
+    flex: 1;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .sobre-diferencial-titulo {
+    color: var(--green);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .sobre-linha {
+    border-color: rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+  }
+  .sobre-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+  .sobre-icone { font-size: 1.4rem; }
+  @media (max-width: 768px) {
+    .sobre-layout { flex-direction: column; }
+  }
 
   /* ── RODAPÉ ── */
   footer {
@@ -1376,43 +1410,41 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
     </div>
   </div>
 
-  <!-- ════════ SOBRE NÓS ════════ -->
-  <div id="cat-sobre">
-    <div class="sobre-wrap">
-      <div class="sobre-eyebrow">Quem Somos</div>
-         <div class="sobre-texto">
+ <!-- ════════ SOBRE NÓS ════════ -->
+<div id="cat-sobre">
+  <div class="sobre-wrap">
+    <div class="sobre-layout">
+
+      <!-- COLUNA ESQUERDA -->
+      <div class="sobre-esquerda">
+        <div class="sobre-eyebrow">Quem Somos</div>
         <p>Desde 2016 a <strong>SOLOFORTE</strong> é uma revendedora especializada em peças e componentes, originais e alternativos, para implementos agrícolas das principais e mais reconhecidas fabricantes do mercado.</p>
 
-        <p><strong>Quem Atendemos</strong></p>
-
-        <p>Produtores rurais, empresas do setor agrícola e distribuidores de peças que buscam:</p>
-
-        <ul>
-          <li>Confiança nas peças adquiridas;</li>
-          <li>Agilidade na entrega;</li>
-          <li>Alto desempenho em suas operações.</li>
-        </ul>
-        <p>Trabalhamos com um portfólio amplo e criterioso, garantindo soluções que asseguram durabilidade, eficiência e excelente custo-benefício.</p>
-
-        <p><strong>Nosso Diferencial</strong></p>
-
-        <p>No agronegócio, cada hora conta. Por isso, priorizamos:</p>
-
-        <ul>
-          <li>Rapidez nos processos;</li>
-          <li>Eficiência logística;</li>
-          <li>Atendimento próximo e suporte ágil.</li>
-        </ul>
-        <p>Nosso objetivo é garantir que nossos clientes mantenham sua produtividade sem interrupções.</p>
-
-        <p><strong>Nossa Missão</strong></p>
-
-        <p>Fornecer peças e componentes com qualidade comprovada, assegurando entregas rápidas e contribuindo para a máxima performance das operações agrícolas.</p>
-
-        <p>Ser uma parceira sólida e estratégica para o agronegócio, entregando confiança, competitividade e resultados.</p>
-
-        <p><strong>SOLOFORTE — Força e confiança que impulsionam o campo.</strong></p>
+        <p><strong class="sobre-subtitulo">Quem Atendemos</strong></p>
+        <p>Atendemos produtores rurais, empresas do setor agrícola e distribuidores de peças que buscam confiança nas peças adquiridas, agilidade na entrega e alto desempenho em suas operações.</p>
       </div>
+
+      <!-- COLUNA DIREITA -->
+      <div class="sobre-direita">
+        <p class="sobre-diferencial-titulo">Nosso Diferencial</p>
+        <hr class="sobre-linha">
+        <div class="sobre-item">
+          <span class="sobre-icone">🎯</span>
+          <span>Confiança nas peças adquiridas</span>
+        </div>
+        <div class="sobre-item">
+          <span class="sobre-icone">🚚</span>
+          <span>Agilidade na entrega</span>
+        </div>
+        <div class="sobre-item">
+          <span class="sobre-icone">📊</span>
+          <span>Alto desempenho em suas operações</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
       <!-- CARROSSEL -->
       <div class="carrossel-section">
         <div class="carrossel-titulo">&#128230; Nosso Estoque</div>
