@@ -886,39 +886,58 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
     .carrossel-slide { flex: 0 0 calc(50% - 6px); min-width: calc(50% - 6px); }
   }
 /* ── SOBRE ── */
-  .sobre-layout {
-    display: flex;
-    gap: 48px;
-    align-items: flex-start;
-  }
-  .sobre-esquerda { flex: 1.2; }
-  .sobre-direita {
-    flex: 1;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    padding: 24px;
-  }
-  .sobre-diferencial-titulo {
-    color: var(--green);
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-  .sobre-linha {
-    border-color: rgba(255,255,255,0.2);
-    margin-bottom: 20px;
-  }
-  .sobre-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-  }
-  .sobre-icone { font-size: 1.4rem; }
-  @media (max-width: 768px) {
-    .sobre-layout { flex-direction: column; }
-  }
+.sobre-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.sobre-eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  color: var(--green);
+  margin-bottom: 20px;
+}
+.sobre-esquerda { flex: 1.2; }
+.sobre-direita {
+  flex: 1;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.04);
+}
+.sobre-diferencial-titulo {
+  color: var(--green);
+  font-weight: bold;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+.sobre-linha {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 22px;
+}
+.sobre-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+.sobre-icone {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+.sobre-subtitulo {
+  color: var(--green);
+  display: block;
+  margin: 14px 0 6px;
+}
+@media (max-width: 768px) {
+  .sobre-layout { flex-direction: column; }
+}
 
   /* ── RODAPÉ ── */
   footer {
@@ -1429,16 +1448,23 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
         <p class="sobre-diferencial-titulo">Nosso Diferencial</p>
         <hr class="sobre-linha">
         <div class="sobre-item">
-          <span class="sobre-icone">🎯</span>
-          <span>Confiança nas peças adquiridas</span>
-        </div>
-        <div class="sobre-item">
-          <span class="sobre-icone">🚚</span>
-          <span>Agilidade na entrega</span>
-        </div>
-        <div class="sobre-item">
-          <span class="sobre-icone">📊</span>
-          <span>Alto desempenho em suas operações</span>
+  <svg class="sobre-icone" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="1.8">
+    <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
+  </svg>
+  <span>Confiança nas peças adquiridas</span>
+</div>
+<div class="sobre-item">
+  <svg class="sobre-icone" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="1.8">
+    <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+  </svg>
+  <span>Agilidade na entrega</span>
+</div>
+<div class="sobre-item">
+  <svg class="sobre-icone" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="1.8">
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+  </svg>
+  <span>Alto desempenho em suas operações</span>
+</div>
         </div>
       </div>
 
