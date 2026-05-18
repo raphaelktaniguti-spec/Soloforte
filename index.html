@@ -547,16 +547,17 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
     .qty-input::-webkit-outer-spin-button,
     .qty-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-   <!-- ===== SOBRE NÓS ===== -->
+ <!-- ===== SOBRE NÓS ===== -->
 <section id="sobre">
 
   <div class="sobre-wrap">
 
+    <!-- ESQUERDA -->
     <div class="sobre-col-esq">
 
-      <span class="sobre-tag">
+      <div class="sobre-tag">
         QUEM SOMOS
-      </span>
+      </div>
 
       <div class="sobre-linha"></div>
 
@@ -578,8 +579,10 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
 
     </div>
 
+    <!-- DIVISOR -->
     <div class="sobre-divisor"></div>
 
+    <!-- DIREITA -->
     <div class="sobre-col-dir">
 
       <div class="sobre-card">
@@ -590,7 +593,9 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
 
         <div>
           <h3>Confiança</h3>
-          <p>Peças selecionadas com qualidade comprovada.</p>
+          <p>
+            Peças selecionadas com qualidade comprovada.
+          </p>
         </div>
 
       </div>
@@ -603,7 +608,9 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
 
         <div>
           <h3>Agilidade</h3>
-          <p>Rapidez nos processos e entregas eficientes.</p>
+          <p>
+            Rapidez nos processos e entregas eficientes.
+          </p>
         </div>
 
       </div>
@@ -616,7 +623,9 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
 
         <div>
           <h3>Performance</h3>
-          <p>Soluções para manter sua operação produtiva.</p>
+          <p>
+            Soluções para manter sua operação produtiva.
+          </p>
         </div>
 
       </div>
@@ -950,6 +959,158 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
     .footer-content { flex-direction: column; }
     footer { padding: 40px 20px 20px; }
   }
+    /* ===== SOBRE ===== */
+
+#sobre{
+  padding: 90px 30px;
+}
+
+.sobre-wrap{
+
+  max-width: 1350px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+
+  gap: 55px;
+
+  background: rgba(8,8,8,0.72);
+
+  border-top: 1px solid rgba(126,217,87,0.4);
+  border-bottom: 1px solid rgba(126,217,87,0.4);
+
+  padding: 80px 70px;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.sobre-tag{
+  color: #7ed957;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 22px;
+}
+
+.sobre-linha{
+  width: 62px;
+  height: 3px;
+
+  background: #7ed957;
+
+  margin-bottom: 40px;
+}
+
+.sobre-texto p{
+  color: #dddddd;
+
+  font-size: 17px;
+  line-height: 1.9;
+
+  margin-bottom: 34px;
+}
+
+.sobre-texto strong{
+  color: #7ed957;
+}
+
+.sobre-divisor{
+  width: 1px;
+  background: rgba(126,217,87,0.28);
+}
+
+.sobre-col-dir{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.sobre-card{
+
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 26px;
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.025);
+
+  border: 1px solid rgba(126,217,87,0.16);
+
+  transition: all .25s ease;
+}
+
+.sobre-card:hover{
+
+  transform: translateY(-4px);
+
+  border-color: rgba(126,217,87,0.45);
+
+  background: rgba(255,255,255,0.045);
+}
+
+.sobre-icon{
+
+  min-width: 84px;
+  height: 84px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  border: 1px solid rgba(126,217,87,0.55);
+
+  color: #7ed957;
+
+  font-size: 38px;
+
+  background: rgba(126,217,87,0.05);
+}
+
+.sobre-card h3{
+
+  color: #fff;
+
+  font-size: 22px;
+
+  margin-bottom: 8px;
+}
+
+.sobre-card p{
+
+  color: #d1d1d1;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+@media(max-width:980px){
+
+  .sobre-wrap{
+
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding: 50px 24px;
+  }
+
+  .sobre-divisor{
+    display:none;
+  }
+
+}
   </style>
 </head>
 <body>
