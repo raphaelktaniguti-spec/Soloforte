@@ -1521,7 +1521,7 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
    </div>
 </div>
   <!-- ════════ MARCAS ATENDIDAS ════════ -->
-<div id="cat-marcas">
+<div id="cat-marcas" class="hidden">
   <div class="marcas-wrap">
     <div class="marcas-header">
       <span class="marcas-icon">🌱</span>
@@ -1545,7 +1545,7 @@ header, .hero-strip, .category-tabs, main, footer, section, nav, .container {
   </div>
 </div>
       <!-- CARROSSEL -->
-      <div class="carrossel-section">
+      <div class="carrossel-section hidden">
         <div class="carrossel-titulo">&#128230; Nosso Estoque</div>
         <div class="carrossel-wrapper">
           <div class="carrossel-track" id="carrosselTrack">
@@ -1628,6 +1628,11 @@ function switchCategory(cat) {
   const tabs = document.querySelectorAll('.cat-tab');
   const cats = ['sobre','discos','mancais','eixos'];
   tabs.forEach((t,i) => t.classList.toggle('active', cats[i] === cat));
+
+  // Mostrar marcas e carrossel só na página inicial
+  const mostrar = cat === 'sobre';
+  document.getElementById('cat-marcas').classList.toggle('hidden', !mostrar);
+  document.querySelector('.carrossel-section').classList.toggle('hidden', !mostrar);
 }
 
 /* ── QUANTIDADE ── */
